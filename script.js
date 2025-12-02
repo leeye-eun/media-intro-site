@@ -5,17 +5,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const backBtn = document.getElementById("backBtn");
   const logo = document.querySelector(".logo");
 
-  // 특정 페이지 보여주기
+  /* ============================
+     1) 페이지 전환 함수
+  ============================ */
   function showPage(pageId, push = true) {
     pages.forEach((page) => {
       page.classList.toggle("active", page.id === pageId);
     });
 
+    // 사이드바 active 표시
     navLinks.forEach((btn) => {
       const target = btn.dataset.page;
-      btn.classList.toggle("active", target === pageId);
+      if (!btn.classList.contains("nav-sublink")) {
+        btn.classList.toggle("active", target === pageId);
+      }
     });
 
+    // breadcrumb 변경
     const currentPage = document.getElementById(pageId);
     if (currentPage) {
       const label = currentPage.dataset.breadcrumb || "홈";
@@ -27,148 +33,121 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // 사이드바 버튼 클릭
-  navLinks.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const target = btn.dataset.page;
-      if (target) showPage(target);
+  /* ============================
+     2) 사이드바: 드라마 토글
+  ============================ */
+  const dramaBtn = document.querySelector(".nav-link[data-page='drama']");
+  const dramaSubmenu = document.querySelector("#drama-submenu");
+
+  dramaBtn.addEventListener("click", () => {
+    dramaSubmenu.classList.toggle("show");
+  });
+
+  // 드라마1~3 클릭 시 상세페이지 이동
+  document.querySelectorAll(".nav-sublink").forEach((item) => {
+    item.addEventListener("click", () => {
+      const target = item.dataset.page;
+      showPage(target);
     });
   });
 
-  // 로고 클릭 → 홈으로
-  if (logo) {
-    logo.addEventListener("click", () => showPage("home"));
-  }
+  /* ============================
+     3) 홈: 카드 클릭 → 검색창 펼침
+  ============================ */
+  const homeCards = document.querySelectorAll(".home-card");
+  const searchBoxes = document.querySelectorAll(".home-search");
 
-  // 상단 뒤로가기 버튼
-  if (backBtn) {
-    backBtn.addEventListener("click", () => {
-      history.back();
+  homeCards.forEach((card) => {
+    const type = card.dataset.search;
+
+    card.addEventListener("click", () => {
+      searchBoxes.forEach((box) => box.classList.remove("active"));
+      document.querySelector(`#search-${type}`).classList.add("active");
+    });
+  });
+
+  /* ============================
+     4) 검색 기능 (드라마만)
+  ============================ */
+  const dramaSearchInput = document.getElementById("dramaSearch");
+  const dramaSearchResults = document.getElementById("dramaSearchResults");
+
+  const dramaList = [
+    { id: "drama1", name: "드라마 1" },
+    { id: "drama2", name: "드라마 2" },
+    { id: "drama3", name: "드라마 3" },
+  ];
+
+  dramaSearchInput.addEventListener("input", () => {
+    const keyword = dramaSearchInput.value.trim();
+    dramaSearchResults.innerHTML = "";
+
+    if (keyword.length === 0) return;
+
+    const filtered = dramaList.filter((d) => d.name.includes(keyword));
+
+    filtered.forEach((d) => {
+      const btn = document.createElement("button");
+      btn.className = "search-result";
+      btn.textContent = d.name;
+      btn.onclick = () => showPage(d.id);
+      dramaSearchResults.appendChild(btn);
+    });
+  });
+
+  /* ============================
+     5) 리뷰 저장 + 출력
+  ============================ */
+  function loadReviews(dramaId) {
+    const ul = document.querySelector(`#${dramaId} .review-list`);
+    ul.innerHTML = "";
+
+    const stored = JSON.parse(localStorage.getItem(dramaId) || "[]");
+
+    stored.forEach((item) => {
+      const li = document.createElement("li");
+      li.textContent = `${item.star}점 - ${item.text}`;
+      ul.appendChild(li);
     });
   }
 
-  // 브라우저 뒤로/앞으로 이동
+  document.querySelectorAll(".review-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const dramaId = btn.dataset.target;
+
+      const star = document.querySelector(`#${dramaId} .review-star`).value;
+      const text = document.querySelector(`#${dramaId} .review-input`).value;
+
+      if (!text.trim()) return alert("리뷰를 입력하세요!");
+
+      const stored = JSON.parse(localStorage.getItem(dramaId) || "[]");
+      stored.push({ star, text });
+
+      localStorage.setItem(dramaId, JSON.stringify(stored));
+      loadReviews(dramaId);
+
+      document.querySelector(`#${dramaId} .review-input`).value = "";
+    });
+  });
+
+  /* ============================
+     6) 뒤로가기 지원
+  ============================ */
+  if (backBtn) {
+    backBtn.addEventListener("click", () => history.back());
+  }
+
   window.addEventListener("popstate", (e) => {
     const pageId = e.state?.pageId || "home";
     showPage(pageId, false);
   });
 
-  // 첫 로딩 시 해시 확인
+  /* ============================
+     7) 첫 로딩
+  ============================ */
   const initialPage = location.hash.replace("#", "") || "home";
   showPage(initialPage, false);
-    // ==========================
-  // 홈 카드 클릭 → 해당 검색 박스 열기
-  // ==========================
-  const homeCards = document.querySelectorAll(".home-card");
-  const searchSections = document.querySelectorAll(".home-search-section");
 
-  function openSearchSection(type) {
-    searchSections.forEach((sec) => {
-      sec.classList.toggle("active", sec.dataset.type === type);
-    });
-  }
-
-  homeCards.forEach((card) => {
-    card.addEventListener("click", () => {
-      const type = card.dataset.search; // drama / movie / show
-      showPage("home"); // 홈에 머무르면서
-      openSearchSection(type);
-    });
-  });
-
-  // 처음에는 드라마 검색 보이게
-  openSearchSection("drama");
-
-  // ==========================
-  // 검색 입력값으로 필터링
-  // ==========================
-  const searchInputs = document.querySelectorAll(".home-search-input");
-
-  searchInputs.forEach((input) => {
-    input.addEventListener("input", () => {
-      const keyword = input.value.trim();
-      const section = input.closest(".home-search-section");
-      const items = section.querySelectorAll("li");
-
-      items.forEach((li) => {
-        const name = li.dataset.name || "";
-        li.style.display = name.includes(keyword) ? "" : "none";
-      });
-    });
-  });
-
-  // 검색 결과 버튼 클릭 → 해당 페이지로 이동
-  const searchLinks = document.querySelectorAll(".search-link");
-  searchLinks.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const targetPage = btn.dataset.page; // drama1, movie1, show1 ...
-      if (targetPage) {
-        showPage(targetPage);
-      }
-    });
-  });
-
+  // 리뷰 자동 로딩
+  ["drama1", "drama2", "drama3"].forEach((id) => loadReviews(id));
 });
- // ==========================
-  // 드라마1 리뷰(localStorage)
-  // ==========================
-  const reviewForm = document.querySelector("#drama1 .review-form");
-  const reviewList = document.querySelector("#drama1 .review-list");
-  const STORAGE_KEY = "reviews-drama1";
-
-  function loadReviews() {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (!saved) return;
-    const arr = JSON.parse(saved);
-    reviewList.innerHTML = "";
-    arr.forEach((item) => {
-      const li = document.createElement("li");
-      li.textContent = `⭐ ${item.rating}점 - ${item.comment}`;
-      reviewList.appendChild(li);
-    });
-  }
-
-  function saveReview(rating, comment) {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    const arr = saved ? JSON.parse(saved) : [];
-    arr.push({ rating, comment });
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
-  }
-
-  if (reviewForm) {
-    reviewForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const formData = new FormData(reviewForm);
-      const rating = formData.get("rating");
-      const comment = formData.get("comment")?.trim();
-
-      if (!comment) return;
-      saveReview(rating, comment);
-      reviewForm.reset();
-      loadReviews();
-    });
-
-    // 페이지 로딩 시 기존 리뷰 보여주기
-    loadReviews();
-  }
-
-  // ==========================
-  // 간단 로그인 토글 (게스트 ↔ 사용자)
-  // ==========================
-  const loginBtn = document.getElementById("loginBtn");
-  const loginState = document.getElementById("loginState");
-  let loggedIn = false;
-
-  if (loginBtn && loginState) {
-    loginBtn.addEventListener("click", () => {
-      loggedIn = !loggedIn;
-      if (loggedIn) {
-        loginState.textContent = "로그인 사용자";
-        loginBtn.textContent = "로그아웃";
-      } else {
-        loginState.textContent = "게스트";
-        loginBtn.textContent = "로그인";
-      }
-    });
-  }
-
