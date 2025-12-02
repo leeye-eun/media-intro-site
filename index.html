@@ -30,8 +30,17 @@
       </li>
 
       <!-- 영화 / 예능은 클릭만 가능 (상세페이지 없음) -->
-    <li calss="dropdown"></li>
-      <li><button class="nav-link disabled">🎞 영화</button></li>
+    <li class="dropdown">
+      <button class="nav-link dropdown-btn">
+        🎞 영화 ▼
+      </button>
+        <ul class="dropdown-content">
+          <li><button class="sub-link" data-page="movie1">영화1</button></li>
+          <li><button class="sub-link" data-page="movie2">영화2</button></li>
+          <li><button class="sub-link" data-page="movie3">영화3</button></li>
+        </ul>
+      </li>
+      <!--예능 부분-->
       <li><button class="nav-link disabled">📺 예능</button></li>
     </ul>
   </aside>
@@ -69,7 +78,7 @@
           <button class="home-card" data-search="drama">
             📺 드라마 찾기
           </button>
-          <button class="home-card disabled">
+          <button class="home-card" data-page="movie-list">
             🎞 영화 찾기
           </button>
           <button class="home-card disabled">
@@ -93,7 +102,7 @@
 
         <div class="detail-box">
           <img src="https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?auto=format&fit=crop&w=500&q=80"
-               class="poster" />
+              class="poster" />
 
           <div class="detail-text">
             <h3>드라마 1 제목</h3>
@@ -165,7 +174,7 @@
 
         <div class="detail-box">
           <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=500&q=80"
-               class="poster" />
+              class="poster" />
 
           <div class="detail-text">
             <h3>드라마 3 제목</h3>
@@ -207,11 +216,85 @@
       <!-- ========================= -->
       <!-- 영화·예능은 리스트만 있음 -->
       <!-- ========================= -->
-      <section id="movie-list" class="page" data-breadcrumb="영화">
-        <h2>영화 목록</h2>
-        <p>영화 정보는 아직 준비되지 않았습니다.</p>
+      <section id="movie1" class="page" data-breadcrumb="영화 1">
+        <h2>영화 1</h2>
+
+        <div class="detail-box">
+          <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=500&q=80"
+              class="poster" />
+
+          <div class="detail-text">
+            <h3>영화 1 제목</h3>
+            <p>이곳에 영화 1의 줄거리와 감독, 출연진 정보를 적어보세요.</p>
+          </div>
+        </div>
+
+        <div class="review-section">
+          <h3>평점 & 리뷰</h3>
+          <div class="review-form">
+            <select id="rate-m1">
+              <option value="5">⭐ 5점</option>
+              <option value="4">⭐ 4점</option>
+              <option value="3">⭐ 3점</option>
+              <option value="2">⭐ 2점</option>
+              <option value="1">⭐ 1점</option>
+            </select>
+            <input id="review-m1" type="text" placeholder="영화 감상평을 남겨주세요" />
+            <button data-review="m1" class="review-btn">등록</button>
+          </div>
+          <ul id="review-list-m1" class="review-list"></ul>
+        </div>
       </section>
 
+      <section id="movie2" class="page" data-breadcrumb="영화 2">
+        <h2>영화 2</h2>
+        <div class="detail-box">
+          <img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?auto=format&fit=crop&w=500&q=80"
+              class="poster" />
+          <div class="detail-text">
+            <h3>영화 2 제목</h3>
+            <p>영화 2에 대한 설명입니다.</p>
+          </div>
+        </div>
+
+        <div class="review-section">
+          <h3>평점 & 리뷰</h3>
+          <div class="review-form">
+            <select id="rate-m2">
+              <option value="5">⭐ 5점</option>
+              <option value="4">⭐ 4점</option>
+            </select>
+            <input id="review-m2" type="text" placeholder="리뷰 작성" />
+            <button data-review="m2" class="review-btn">등록</button>
+          </div>
+          <ul id="review-list-m2" class="review-list"></ul>
+        </div>
+      </section>
+
+      <section id="movie3" class="page" data-breadcrumb="영화 3">
+
+        <h2>영화 3</h2>
+        <div class="detail-box">
+          <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e63?auto=format&fit=crop&w=500&q=80"
+              class="poster" />
+          <div class="detail-text">
+            <h3>영화 3 제목</h3>
+            <p>영화 3에 대한 설명입니다.</p>
+          </div>
+        </div>
+        </section>
+      <section id="movie3" class="page" data-breadcrumb="영화 3">
+        </section>
+
+      <section id="movie-list" class="page" data-breadcrumb="영화 목록">
+        <h2>영화 목록</h2>
+        <ul class="list-ul">
+          <li><button class="list-link" data-page="movie1">영화 1</button></li>
+          <li><button class="list-link" data-page="movie2">영화 2</button></li>
+          <li><button class="list-link" data-page="movie3">영화 3</button></li>
+        </ul>
+      </section>
+      <!--예능-->
       <section id="show-list" class="page" data-breadcrumb="예능">
         <h2>예능 목록</h2>
         <p>예능 정보는 아직 준비되지 않았습니다.</p>
