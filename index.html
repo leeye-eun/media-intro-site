@@ -32,10 +32,47 @@
 
     <main class="page-container">
       <!-- 우선 홈만 빈 상태로 만들어 둠 -->
-      <section id="home" class="page active" data-breadcrumb="홈">
-        <h1>미디어 콘텐츠 아카이브</h1>
-        <p>여기는 홈입니다. 나중에 예쁜 디자인을 넣을 거예요.</p>
-      </section>
+     <section id="home" class="page active" data-breadcrumb="홈">
+
+  <!-- 큰 그림(Hero) 영역 -->
+  <div class="home-hero">
+    <img
+      src="https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?q=80&w=1200"
+      alt="영화관 이미지"
+      class="home-hero-img"
+    />
+    <div class="home-hero-overlay">
+      <h1 class="home-title">미디어 콘텐츠 아카이브</h1>
+      <p class="home-subtitle">
+        드라마·영화·예능 정보를 간단히 기록하고 소개하는 공간입니다.
+      </p>
+    </div>
+  </div>
+
+  <!-- 드라마/영화/예능 카드 -->
+  <div class="home-cards">
+    <button class="home-card" data-search="drama">
+      <h3>🎬 드라마 찾기</h3>
+      <p>보고 싶은 드라마 제목을 검색해 보세요.</p>
+    </button>
+
+    <button class="home-card" data-search="movie">
+      <h3>🎞 영화 찾기</h3>
+      <p>찾고 싶은 영화를 검색해 보세요.</p>
+    </button>
+
+    <button class="home-card" data-search="show">
+      <h3>📺 예능 찾기</h3>
+      <p>예능 프로그램을 검색해 보세요.</p>
+    </button>
+  </div>
+
+  <!-- 검색 영역은 다음 스텝에서 채울 예정 -->
+  <div class="home-search-wrapper">
+    <!-- 나중에 검색 UI 들어갈 자리 -->
+  </div>
+</section>
+
 
       <!-- 나중에 추가할 페이지 자리만 미리 만들어 둠 -->
       <section id="drama-list" class="page" data-breadcrumb="드라마">
