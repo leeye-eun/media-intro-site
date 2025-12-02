@@ -110,16 +110,96 @@
 
       <!-- 나중에 추가할 페이지 자리만 미리 만들어 둠 -->
       <section id="drama-list" class="page" data-breadcrumb="드라마">
-        <h2>드라마 목록</h2>
-      </section>
+  <h2>드라마 목록</h2>
+  <ul>
+    <li>
+      <button class="search-link" data-page="drama1">드라마 1</button>
+    </li>
+    <!-- 나중에 드라마 2, 3 추가 가능 -->
+  </ul>
+</section>
+
 
       <section id="movie-list" class="page" data-breadcrumb="영화">
-        <h2>영화 목록</h2>
-      </section>
+  <h2>영화 목록</h2>
+  <ul>
+    <li>
+      <button class="search-link" data-page="movie1">영화 1</button>
+    </li>
+  </ul>
+</section>
+
 
       <section id="show-list" class="page" data-breadcrumb="예능">
-        <h2>예능 목록</h2>
+  <h2>예능 목록</h2>
+  <ul>
+    <li>
+      <button class="search-link" data-page="show1">예능 1</button>
+    </li>
+  </ul>
+</section>
+      <!-- 드라마 1 상세 페이지 -->
+      <section id="drama1" class="page" data-breadcrumb="드라마 1">
+        <h2 class="work-title">드라마 1 제목</h2>
+        <p class="work-meta">작가: OOO | 방영 연도: 2024</p>
+
+        <div class="content">
+          <div class="poster-box">[포스터 자리]</div>
+          <div class="text-box">
+            <p><strong>줄거리:</strong> 여기에 드라마 줄거리 요약을 적을 수 있어요.</p>
+            <p><strong>감상:</strong> 드라마를 보면서 느낀 점, 인상적인 장면 등을 적으면 됩니다.</p>
+          </div>
+        </div>
+
+        <!-- 리뷰 영역은 스텝 7에서 채움 -->
+        <div class="review-section">
+          <h3>이 드라마에 대한 평점과 한 줄 리뷰</h3>
+          <form class="review-form">
+            <label>
+              평점:
+              <select name="rating">
+                <option value="5">5점</option>
+                <option value="4">4점</option>
+                <option value="3">3점</option>
+                <option value="2">2점</option>
+                <option value="1">1점</option>
+              </select>
+            </label>
+            <label>
+              한 줄 리뷰:
+              <input type="text" name="comment" placeholder="어땠는지 짧게 적어주세요." />
+            </label>
+            <button type="submit">등록</button>
+          </form>
+
+          <ul class="review-list"></ul>
+        </div>
       </section>
+
+      <!-- 영화 1 상세 페이지 (내용은 심플하게) -->
+      <section id="movie1" class="page" data-breadcrumb="영화 1">
+        <h2 class="work-title">영화 1 제목</h2>
+        <p class="work-meta">감독: OOO | 개봉 연도: 2024</p>
+        <div class="content">
+          <div class="poster-box">[포스터 자리]</div>
+          <div class="text-box">
+            <p>영화 줄거리와 감상을 간단히 적는 공간입니다.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 예능 1 상세 페이지 -->
+      <section id="show1" class="page" data-breadcrumb="예능 1">
+        <h2 class="work-title">예능 1 제목</h2>
+        <p class="work-meta">출연: OOO | 방송 연도: 2024</p>
+        <div class="content">
+          <div class="poster-box">[포스터 자리]</div>
+          <div class="text-box">
+            <p>예능 포인트와 재미있었던 순간을 적는 공간입니다.</p>
+          </div>
+        </div>
+      </section>
+
     </main>
   </div>
 
