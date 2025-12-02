@@ -109,4 +109,66 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+ // ==========================
+  // 드라마1 리뷰(localStorage)
+  // ==========================
+  const reviewForm = document.querySelector("#drama1 .review-form");
+  const reviewList = document.querySelector("#drama1 .review-list");
+  const STORAGE_KEY = "reviews-drama1";
+
+  function loadReviews() {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (!saved) return;
+    const arr = JSON.parse(saved);
+    reviewList.innerHTML = "";
+    arr.forEach((item) => {
+      const li = document.createElement("li");
+      li.textContent = `⭐ ${item.rating}점 - ${item.comment}`;
+      reviewList.appendChild(li);
+    });
+  }
+
+  function saveReview(rating, comment) {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    const arr = saved ? JSON.parse(saved) : [];
+    arr.push({ rating, comment });
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
+  }
+
+  if (reviewForm) {
+    reviewForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const formData = new FormData(reviewForm);
+      const rating = formData.get("rating");
+      const comment = formData.get("comment")?.trim();
+
+      if (!comment) return;
+      saveReview(rating, comment);
+      reviewForm.reset();
+      loadReviews();
+    });
+
+    // 페이지 로딩 시 기존 리뷰 보여주기
+    loadReviews();
+  }
+
+  // ==========================
+  // 간단 로그인 토글 (게스트 ↔ 사용자)
+  // ==========================
+  const loginBtn = document.getElementById("loginBtn");
+  const loginState = document.getElementById("loginState");
+  let loggedIn = false;
+
+  if (loginBtn && loginState) {
+    loginBtn.addEventListener("click", () => {
+      loggedIn = !loggedIn;
+      if (loggedIn) {
+        loginState.textContent = "로그인 사용자";
+        loginBtn.textContent = "로그아웃";
+      } else {
+        loginState.textContent = "게스트";
+        loginBtn.textContent = "로그인";
+      }
+    });
+  }
 
