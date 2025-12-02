@@ -68,9 +68,43 @@
   </div>
 
   <!-- 검색 영역은 다음 스텝에서 채울 예정 -->
-  <div class="home-search-wrapper">
-    <!-- 나중에 검색 UI 들어갈 자리 -->
+ <div class="home-search-wrapper">
+
+  <!-- 드라마 검색 -->
+  <div class="home-search-section" data-type="drama">
+    <h3>드라마 찾기</h3>
+    <input type="text" class="home-search-input" placeholder="예: 드라마 1" />
+    <ul class="home-search-results">
+      <li data-name="드라마 1">
+        <button class="search-link" data-page="drama1">드라마 1</button>
+      </li>
+    </ul>
   </div>
+
+  <!-- 영화 검색 -->
+  <div class="home-search-section" data-type="movie">
+    <h3>영화 찾기</h3>
+    <input type="text" class="home-search-input" placeholder="예: 영화 1" />
+    <ul class="home-search-results">
+      <li data-name="영화 1">
+        <button class="search-link" data-page="movie1">영화 1</button>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 예능 검색 -->
+  <div class="home-search-section" data-type="show">
+    <h3>예능 찾기</h3>
+    <input type="text" class="home-search-input" placeholder="예: 예능 1" />
+    <ul class="home-search-results">
+      <li data-name="예능 1">
+        <button class="search-link" data-page="show1">예능 1</button>
+      </li>
+    </ul>
+  </div>
+
+</div>
+
 </section>
 
 

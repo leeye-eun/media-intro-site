@@ -194,4 +194,45 @@ body {
 .home-search-wrapper {
   margin-top: 12px;
 }
+/* ==========================
+   홈 검색 영역
+   ========================== */
+.home-search-section {
+  display: none;  /* 기본은 숨김, JS로 선택된 것만 보이게 */
+  margin-top: 16px;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  padding: 14px 16px;
+}
+
+.home-search-section.active {
+  display: block;
+}
+
+.home-search-input {
+  width: 100%;
+  padding: 7px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin: 6px 0 8px 0;
+}
+
+.home-search-results {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.home-search-results li {
+  margin-bottom: 4px;
+}
+
+.search-link {
+  border: none;
+  background: transparent;
+  color: #0066cc;
+  cursor: pointer;
+  padding: 0;
+}
 
