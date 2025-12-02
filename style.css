@@ -1,0 +1,120 @@
+/* 기본 박스 설정 */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: #f5f5f5;
+  color: #222;
+}
+
+/* ============================
+   왼쪽 사이드바
+   ============================ */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 100vh;
+  background: #ffffff;
+  border-right: 1px solid #ddd;
+  padding: 20px 14px;
+  overflow-y: auto;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-link {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 6px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.nav-link:hover {
+  background: #efefef;
+}
+
+.nav-link.active {
+  background: #222;
+  color: #fff;
+}
+
+/* ============================
+   오른쪽 레이아웃
+   ============================ */
+.layout {
+  margin-left: 220px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.top-bar {
+  background: #fff;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+#backBtn {
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.breadcrumb {
+  flex: 1;
+  font-size: 13px;
+}
+
+.login-area {
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#loginBtn {
+  background: #fff;
+  border: 1px solid #444;
+  border-radius: 999px;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+
+/* 페이지 공통 */
+.page-container {
+  padding: 24px 32px 40px 32px;
+}
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
