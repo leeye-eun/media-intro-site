@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>미디어 콘텐츠 아카이브</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- 왼쪽 사이드바 -->
+  <aside class="sidebar">
+    <div class="logo">미디어 아카이브</div>
+    <ul class="nav-list">
+      <li><button class="nav-link" data-page="home">🏠 홈</button></li>
+      <li><button class="nav-link" data-page="drama-list">드라마</button></li>
+      <li><button class="nav-link" data-page="movie-list">영화</button></li>
+      <li><button class="nav-link" data-page="show-list">예능</button></li>
+    </ul>
+  </aside>
+
+  <!-- 오른쪽 전체 레이아웃 -->
+  <div class="layout">
+    <header class="top-bar">
+      <button id="backBtn">← 뒤로가기</button>
+      <div class="breadcrumb">
+        현재 위치: <span class="breadcrumb-current">홈</span>
+      </div>
+      <div class="login-area">
+        <span id="loginState">게스트</span>
+        <button id="loginBtn">로그인</button>
+      </div>
+    </header>
+
+    <main class="page-container">
+      <!-- 우선 홈만 빈 상태로 만들어 둠 -->
+      <section id="home" class="page active" data-breadcrumb="홈">
+        <h1>미디어 콘텐츠 아카이브</h1>
+        <p>여기는 홈입니다. 나중에 예쁜 디자인을 넣을 거예요.</p>
+      </section>
+
+      <!-- 나중에 추가할 페이지 자리만 미리 만들어 둠 -->
+      <section id="drama-list" class="page" data-breadcrumb="드라마">
+        <h2>드라마 목록</h2>
+      </section>
+
+      <section id="movie-list" class="page" data-breadcrumb="영화">
+        <h2>영화 목록</h2>
+      </section>
+
+      <section id="show-list" class="page" data-breadcrumb="예능">
+        <h2>예능 목록</h2>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
