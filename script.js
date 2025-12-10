@@ -86,9 +86,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchResults = document.getElementById("searchResults");
 
   const dramaData = [
-    { title: "드라마 1", pageId: "drama1" },
-    { title: "드라마 2", pageId: "drama2" },
-    { title: "드라마 3", pageId: "drama3" }
+    { title: "상속자들", pageId: "drama1" },
+    { title: "태양의 후예", pageId: "drama2" },
+    { title: "청춘기록", pageId: "drama3" }
   ];
 
   searchInput.addEventListener("input", () => {
