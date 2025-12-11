@@ -1,2 +1,2 @@
 홈 화면의 전체적인 틀을 설계해 기본 구조를 완성함. 홈 화면에 드라마 찾기 버튼을 만들고 드라마 목록을 클릭하면 상세페이지로 이동하게 했으며, 상세페이지에서 제목·이미지·설명·평점 선택·한 줄 리뷰 작성 기능을 넣고 리뷰가 저장되도록 만들었고, 검색창에 드라마 제목을 입력하면 필터링되게 했고, 카드 높이를 전체 폭으로 넓혀 UI를 개선했고, 사이드바 목록을 상속자들/태양의 후예/청춘기록으로 수정해 바로 이동할 수 있게 개선함.
-<img width="1603" height="1276" alt="image" src="https://github.com/user-attachments/assets07c5c0c5-82b8-422f-a3d2-52204b0f1382" />
+<img width="1603" height="1276" alt="flow" src="https://github.com/user-attachments/assets/07c5c0c5-82b8-422f-a3d2-52204b0f1382" />
