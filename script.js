@@ -64,21 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* ================================
-     홈 카드 → 검색 박스 열기
-  ================================= */
-  const homeCards = document.querySelectorAll(".home-card");
-  const searchBox = document.getElementById("searchBox");
-
-  homeCards.forEach(card => {
-    if (card.classList.contains("disabled")) return;
-    card.addEventListener("click", () => {
-      searchBox.classList.remove("hidden");
-      searchBox.scrollIntoView({ behavior: "smooth" });
-    });
-  });
-
-  /* ================================
-     드라마 검색 기능
+     검색 관련 공통 변수
   ================================= */
   const searchInput = document.getElementById("searchInput");
   const searchResults = document.getElementById("searchResults");
@@ -89,19 +75,65 @@ document.addEventListener("DOMContentLoaded", () => {
     { title: "드라마 3", pageId: "drama3" }
   ];
 
+  const varietyData = [
+    { title: "예능 1", pageId: "variety1" },  // 예능 1 추가
+    { title: "예능 2", pageId: "variety2" },
+    { title: "예능 3", pageId: "variety3" }
+  ];
+
+  let currentSearchType = "drama"; // 기본적으로 드라마 검색
+
+  /* ================================
+     홈 카드 → 검색 박스 열기
+  ================================= */
+  const homeCards = document.querySelectorAll(".home-card");
+  const searchBox = document.getElementById("searchBox");
+
+  homeCards.forEach(card => {
+    if (card.classList.contains("disabled")) return;
+
+    card.addEventListener("click", () => {
+      const type = card.dataset.search || "drama";  // 기본: 드라마
+      currentSearchType = type;
+
+      if (searchInput) {
+        if (type === "variety") {
+          searchInput.placeholder = "예능 제목을 입력하세요 (예: 예능 1)"; // 예능 제목 입력
+        } else {
+          searchInput.placeholder = "드라마 제목을 입력하세요 (예: 드라마 1)";
+        }
+      }
+
+      searchBox.classList.remove("hidden");
+      searchBox.scrollIntoView({ behavior: "smooth" });
+      searchInput?.focus();
+    });
+  });
+
+  /* ================================
+     검색 기능 (드라마/예능 공용)
+  ================================= */
   searchInput?.addEventListener("input", () => {
     const keyword = searchInput.value.trim();
-    searchResults.innerHTML = "";
+    searchResults.innerHTML = ""; // 검색 결과 초기화
 
     if (keyword.length === 0) return;
 
-    const matched = dramaData.filter(d => d.title.includes(keyword));
+    // 기본은 드라마 데이터
+    let source = dramaData;
 
-    matched.forEach(d => {
+    // 예능 검색 모드면 예능 데이터 사용
+    if (currentSearchType === "variety") {
+      source = varietyData;
+    }
+
+    const matched = source.filter(item => item.title.includes(keyword));
+
+    matched.forEach(item => {
       const li = document.createElement("li");
-      li.textContent = d.title;
+      li.textContent = item.title;
       li.className = "search-item";
-      li.addEventListener("click", () => showPage(d.pageId));
+      li.addEventListener("click", () => showPage(item.pageId));
       searchResults.appendChild(li);
     });
   });
@@ -127,7 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const key = btn.dataset.review; // d1,d2,d3,v1,v2,v3
 
       const starSelect = document.getElementById(`rate-${key}`);
-      const textInput  = document.getElementById(`review-${key}`);
+      const textInput = document.getElementById(`review-${key}`);
       if (!starSelect || !textInput) return;
 
       const star = starSelect.value;
