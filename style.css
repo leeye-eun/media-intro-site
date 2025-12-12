@@ -73,6 +73,9 @@ body {
   border-radius: 8px;
 }
 
+.dropdown-content { display: none; }
+.dropdown-content.show { display: block; }
+
 .dropdown-btn:hover {
   background: #eeeeee;
 }
