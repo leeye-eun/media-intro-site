@@ -1,79 +1,207 @@
-// script.js — 페이지 전환용 안전한 스크립트
-document.addEventListener('DOMContentLoaded', function () {
-  const pages = Array.from(document.querySelectorAll('section.page'));
-  const breadcrumbCurrent = document.querySelector('.breadcrumb-current');
-  const backBtn = document.getElementById('backBtn');
+document.addEventListener("DOMContentLoaded", () => {
+  /* ================================
+     1. 사이드바 → 기본 메뉴 이동 (홈 등)
+  ================================ */
+  document.querySelectorAll(".nav-link").forEach((btn) => {
+    if (btn.classList.contains("dropdown-btn")) return;
 
-  function showPage(id) {
-    // 모든 페이지 비활성화
-    pages.forEach(p => p.classList.remove('active'));
-    // 타겟 페이지 활성화
-    const target = document.getElementById(id);
-    if (target) {
-      target.classList.add('active');
-      // 브레드크럼 업데이트 (data-breadcrumb 값 사용)
-      if (breadcrumbCurrent) {
-        breadcrumbCurrent.textContent = target.dataset.breadcrumb || '';
-      }
-      // 스크롤을 맨 위로
-      window.scrollTo(0, 0);
-    } else {
-      // id가 없으면 home으로 fallback
-      const home = document.getElementById('home');
-      if (home) {
-        home.classList.add('active');
-        if (breadcrumbCurrent) breadcrumbCurrent.textContent = home.dataset.breadcrumb || '홈';
-      }
-    }
-    // 모든 드롭다운 닫기 (선택적)
-    document.querySelectorAll('.dropdown-content.show').forEach(d => d.classList.remove('show'));
+    btn.addEventListener("click", () => {
+      const target = btn.dataset.page;
+      if (!target) return;
+      showPage(target);
+    });
+  });
+
+  /* ================================
+     2. 페이지 이동 함수 (SPA 방식 - 드라마용)
+  ================================ */
+  const pages = document.querySelectorAll(".page");
+  const breadcrumb = document.querySelector(".breadcrumb-current");
+
+  function showPage(pageId, push = true) {
+    const targetPage = document.getElementById(pageId);
+    if (!targetPage) return;
+
+    pages.forEach((p) => p.classList.remove("active"));
+    targetPage.classList.add("active");
+
+    breadcrumb.textContent = targetPage.dataset.breadcrumb || "홈";
+
+    if (push) history.pushState({ pageId }, "", "#" + pageId);
   }
 
-  // 버튼(링크) 클릭 처리 — data-page 어트리뷰트 기반
-  document.querySelectorAll('[data-page]').forEach(btn => {
-    btn.addEventListener('click', function (e) {
-      const page = this.dataset.page;
-      if (page) {
-        e.preventDefault();
-        showPage(page);
+  /* ================================
+     3. 사이드바 → 드롭다운 펼치기
+  ================================ */
+  const dropdownBtns = document.querySelectorAll(".dropdown-btn");
+
+  dropdownBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const content = btn.nextElementSibling;
+      if (content && content.classList.contains("dropdown-content")) {
+        content.classList.toggle("show");
       }
     });
   });
 
-  // 드롭다운 버튼 토글 (클래스가 .dropdown-btn 인 버튼)
-  document.querySelectorAll('.dropdown-btn').forEach(btn => {
-    btn.addEventListener('click', function (e) {
-      // 토글만 원하면 아래 줄만 사용. (단, data-page가 있으면 showPage도 동작하게 함)
-      const menu = this.nextElementSibling;
-      if (menu && menu.classList.contains('dropdown-content')) {
-        menu.classList.toggle('show');
+  /* ================================
+     4. 사이드바 → 서브 메뉴 클릭 (드라마용)
+  ================================ */
+  document.querySelectorAll(".sub-link").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const target = btn.dataset.page;
+      if (target) {
+        showPage(target);
       }
-      // 드롭다운 버튼에도 data-page가 있으면 해당 목록 페이지로 이동
-      const page = this.dataset.page;
-      if (page) {
-        showPage(page);
-      }
-      e.stopPropagation();
     });
   });
 
-  // 페이지 외부 클릭 시 드롭다운 닫기
-  document.addEventListener('click', function (e) {
-    if (!e.target.closest('.dropdown')) {
-      document.querySelectorAll('.dropdown-content.show').forEach(d => d.classList.remove('show'));
-    }
-  });
-
-  // 뒤로가기 버튼은 홈으로 이동 (원하면 히스토리 기능으로 바꿀 수도 있음)
+  /* ================================
+     5. 상단 뒤로가기 버튼
+  ================================ */
+  const backBtn = document.getElementById("backBtn");
   if (backBtn) {
-    backBtn.addEventListener('click', function () {
-      showPage('home');
+    backBtn.addEventListener("click", () => {
+      history.back();
     });
   }
 
-  // 초기화: 현재 활성 페이지(있다면) 브레드크럼 적용
-  const active = document.querySelector('section.page.active');
-  if (active && breadcrumbCurrent) {
-    breadcrumbCurrent.textContent = active.dataset.breadcrumb || '홈';
+  window.addEventListener("popstate", (e) => {
+    const pageId = e.state?.pageId || "home";
+    showPage(pageId, false);
+  });
+
+  /* ================================
+     6. 홈 카드 클릭 → 검색창 활성화 및 문구 변경
+  ================================ */
+  const homeCards = document.querySelectorAll(".home-card");
+  const searchBox = document.getElementById("searchBox");
+  const searchInput = document.getElementById("searchInput");
+
+  homeCards.forEach((card) => {
+    if (card.classList.contains("disabled")) return;
+
+    card.addEventListener("click", () => {
+      searchBox.classList.remove("hidden");
+      searchBox.scrollIntoView({ behavior: "smooth" });
+
+      // 카드 종류 확인 (드라마 vs 예능)
+      const type = card.dataset.search;
+
+      if (type === "ent") {
+        searchInput.placeholder = "예능 제목을 입력하시오";
+      } else {
+        searchInput.placeholder = "드라마 제목을 입력하세요 (예: 상속자들)";
+      }
+
+      // 검색창 초기화
+      searchInput.value = "";
+      document.getElementById("searchResults").innerHTML = "";
+      searchInput.focus();
+    });
+  });
+
+  /* ================================
+     7. [핵심 수정] 통합 검색 기능
+     - 드라마 검색 시: 내부 페이지 이동 (showPage)
+     - 예능 검색 시: 외부 HTML 파일 이동 (location.href)
+  ================================ */
+  const searchResults = document.getElementById("searchResults");
+
+  const allData = [
+    // [드라마] 내부 이동용 pageId
+    { title: "상속자들", pageId: "drama1" },
+    { title: "태양의 후예", pageId: "drama2" },
+    { title: "청춘기록", pageId: "drama3" },
+
+    // [예능] 외부 파일 이동용 url
+    { title: "신서유기", url: "ent1.html" },
+    { title: "런닝맨", url: "ent2.html" },
+    { title: "아는형님", url: "ent3.html" }
+  ];
+
+  searchInput.addEventListener("input", () => {
+    const keyword = searchInput.value.trim();
+    searchResults.innerHTML = "";
+
+    if (keyword.length === 0) return;
+
+    // 키워드 포함된 항목 필터링 (allData 사용)
+    const matched = allData.filter((d) =>
+      d.title.includes(keyword)
+    );
+
+    matched.forEach((d) => {
+      const li = document.createElement("li");
+      li.textContent = d.title;
+      li.className = "search-item";
+
+      // 검색 결과 클릭 이벤트
+      li.addEventListener("click", () => {
+        if (d.url) {
+          // url이 있으면 (예능) -> 새 파일로 이동
+          location.href = d.url;
+        } else {
+          // url이 없으면 (드라마) -> 내부 페이지 이동
+          showPage(d.pageId);
+        }
+      });
+
+      searchResults.appendChild(li);
+    });
+  });
+
+  /* ================================
+     8. 리뷰 기능
+  ================================ */
+  function loadReviews(dramaKey) {
+    const list = document.getElementById(`review-list-${dramaKey}`);
+    if (!list) return;
+
+    list.innerHTML = "";
+    const stored = JSON.parse(localStorage.getItem(dramaKey) || "[]");
+
+    stored.forEach((r) => {
+      const li = document.createElement("li");
+      li.textContent = `⭐ ${r.star}점 - ${r.text}`;
+      list.appendChild(li);
+    });
   }
+
+  document.querySelectorAll(".review-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const key = btn.dataset.review;
+
+      const starSelect = document.getElementById(`rate-${key}`);
+      const textInput = document.getElementById(`review-${key}`);
+
+      if (!starSelect || !textInput) return;
+
+      const star = starSelect.value;
+      const text = textInput.value;
+
+      if (!text.trim()) {
+        alert("리뷰를 입력하세요!");
+        return;
+      }
+
+      const existing = JSON.parse(localStorage.getItem(key) || "[]");
+      existing.push({ star, text });
+
+      localStorage.setItem(key, JSON.stringify(existing));
+
+      textInput.value = "";
+      loadReviews(key);
+    });
+  });
+
+  /* ================================
+     9. 초기 로딩
+  ================================ */
+  const initial = location.hash.replace("#", "") || "home";
+  showPage(initial, false);
+
+  loadReviews("d1");
+  loadReviews("d2");
+  loadReviews("d3");
 });
