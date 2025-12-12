@@ -8,6 +8,9 @@
 </head>
 <body>
 
+  <!-- ========================= -->
+  <!-- 왼쪽 사이드바 -->
+  <!-- ========================= -->
   <aside class="sidebar">
     <div class="logo" data-page="home">📚 미디어 아카이브</div>
 
@@ -15,25 +18,37 @@
       <li>
         <button class="nav-link" data-page="home">🏠 홈</button>
       </li>
-
       <!-- 드라마: 클릭하면 목록만 펼쳐짐 -->
       <li class="dropdown">
         <button class="nav-link dropdown-btn">
           🎬 드라마 ▼
         </button>
         <ul class="dropdown-content">
-          <li><button class="sub-link" data-page="drama1">상속자들</button></li>
-          <li><button class="sub-link" data-page="drama2">태양의 후예</button></li>
-          <li><button class="sub-link" data-page="drama3">청춘기록</button></li>
+          <li><button class="sub-link" data-page="drama1">드라마 1</button></li>
+          <li><button class="sub-link" data-page="drama2">드라마 2</button></li>
+          <li><button class="sub-link" data-page="drama3">드라마 3</button></li>
         </ul>
       </li>
 
       <!-- 영화 / 예능은 클릭만 가능 (상세페이지 없음) -->
-      <li><button class="nav-link disabled">🎞 영화</button></li>
+      <li class="dropdown">
+    <button class="nav-link dropdown-btn">
+      🎞 영화 ▼
+    </button>
+    <ul class="dropdown-content">
+          <li><button class="sub-link" oneclick="locaton.href='mo1.html'">영화1</button></li>
+          <li><button class="sub-link" oneclick="locaton.href='mo2.html'">영화2</button></li>
+          <li><button class="sub-link" oneclick="locaton.href='mo3.html'">영화3</button></li>
+    </ul>
+  </li>
+      <!--예능 부분-->
       <li><button class="nav-link disabled">📺 예능</button></li>
     </ul>
   </aside>
 
+  <!-- ========================= -->
+  <!-- 오른쪽 전체 화면 -->
+  <!-- ========================= -->
   <div class="layout">
     <header class="top-bar">
       <button id="backBtn">← 뒤로가기</button>
@@ -46,6 +61,9 @@
     </header>
 
     <main class="page-container">
+      <!-- ========================= -->
+      <!-- 홈 화면 -->
+      <!-- ========================= -->
       <section id="home" class="page active" data-breadcrumb="홈">
 
   <div class="home-hero">
@@ -57,156 +75,30 @@
     </div>
   </div>
 
-        <div class="home-card-area">
-          <button class="home-card" data-search="drama">
-            📺 드라마 찾기
-          </button>
-          <button class="home-card disabled">
-            🎞 영화 찾기
-          </button>
-          <button class="home-card disabled">
-            📺 예능 찾기
-          </button>
-        </div>
+  <div class="home-card-area">
+    <button class="home-card" data-search="drama">
+      📺 드라마 찾기
+    </button>
+    <button class="home-card" data-page="movie-list">
+      🎞 영화 찾기
+    </button>
+    <button class="home-card disabled">
+      📺 예능 찾기
+    </button>
+  </div>
 
+        <!-- 검색 영역 -->
         <div id="searchBox" class="search-box hidden">
-          <input id="searchInput" type="text" placeholder="제목을 입력하세요" />
+          <input id="searchInput" type="text" placeholder="드라마 제목을 입력하세요 (예: 드라마 1)" />
           <ul id="searchResults"></ul>
         </div>
       </section>
+    
 
 
-      <!-- ========================= -->
-      <!-- 드라마 상세 페이지 #1 -->
-      <!-- ========================= -->
-      <section id="drama1" class="page" data-breadcrumb="드라마 1">
-        <h2>드라마 1</h2>
-
-        <div class="detail-box">
-          <img src="https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?auto=format&fit=crop&w=500&q=80"
-               class="poster" />
-
-          <div class="detail-text">
-            <h3>드라마 1 제목</h3>
-            <p>여기에 드라마 1의 간단한 소개글이 들어갑니다.</p>
-          </div>
-        </div>
-
-        <div class="review-section">
-          <h3>평점 & 리뷰</h3>
-
-          <div class="review-form">
-            <select id="rate-d1">
-              <option value="5">⭐ 5점</option>
-              <option value="4">⭐ 4점</option>
-              <option value="3">⭐ 3점</option>
-              <option value="2">⭐ 2점</option>
-              <option value="1">⭐ 1점</option>
-            </select>
-            <input id="review-d1" type="text" placeholder="한 줄 리뷰를 입력하세요" />
-            <button data-review="d1" class="review-btn">등록</button>
-          </div>
-
-          <ul id="review-list-d1" class="review-list"></ul>
-        </div>
-      </section>
 
 
-      <!-- ========================= -->
-      <!-- 드라마 상세 페이지 #2 -->
-      <!-- ========================= -->
-      <section id="drama2" class="page" data-breadcrumb="드라마 2">
-        <h2>드라마 2</h2>
 
-        <div class="detail-box">
-          <img src="https://images.unsplash.com/photo-1518831959642-554d79c3caea?auto=format&fit=crop&w=500&q=80"
-               class="poster" />
-
-        <div class="detail-text">
-            <h3>드라마 2 제목</h3>
-            <p>여기에 드라마 2의 간단한 소개글이 들어갑니다.</p>
-          </div>
-        </div>
-
-        <div class="review-section">
-          <h3>평점 & 리뷰</h3>
-
-          <div class="review-form">
-            <select id="rate-d2">
-              <option value="5">⭐ 5점</option>
-              <option value="4">⭐ 4점</option>
-              <option value="3">⭐ 3점</option>
-              <option value="2">⭐ 2점</option>
-              <option value="1">⭐ 1점</option>
-            </select>
-            <input id="review-d2" type="text" placeholder="한 줄 리뷰를 입력하세요" />
-            <button data-review="d2" class="review-btn">등록</button>
-          </div>
-
-          <ul id="review-list-d2" class="review-list"></ul>
-        </div>
-      </section>
-
-
-      <!-- ========================= -->
-      <!-- 드라마 상세 페이지 #3 -->
-      <!-- ========================= -->
-      <section id="drama3" class="page" data-breadcrumb="드라마 3">
-        <h2>드라마 3</h2>
-
-        <div class="detail-box">
-          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=500&q=80"
-               class="poster" />
-
-          <div class="detail-text">
-            <h3>드라마 3 제목</h3>
-            <p>여기에 드라마 3의 간단한 소개글이 들어갑니다.</p>
-          </div>
-        </div>
-
-        <div class="review-section">
-          <h3>평점 & 리뷰</h3>
-
-          <div class="review-form">
-            <select id="rate-d3">
-              <option value="5">⭐ 5점</option>
-              <option value="4">⭐ 4점</option>
-              <option value="3">⭐ 3점</option>
-              <option value="2">⭐ 2점</option>
-              <option value="1">⭐ 1점</option>
-            </select>
-            <input id="review-d3" type="text" placeholder="한 줄 리뷰를 입력하세요" />
-            <button data-review="d3" class="review-btn">등록</button>
-          </div>
-
-          <ul id="review-list-d3" class="review-list"></ul>
-        </div>
-      </section>
-      <!-- ========================= -->
-      <!-- 드라마 목록 페이지 -->
-      <!-- ========================= -->
-      <section id="drama-list" class="page" data-breadcrumb="드라마 목록">
-        <h2>드라마 목록</h2>
-        <ul class="list-ul">
-          <li><button class="sub-link" data-page="movie1">영화1</button></li>
-          <li><button class="sub-link" data-page="movie2">영화2</button></li>
-          <li><button class="sub-link" data-page="movie3">영화3</button></li>
-        </ul>
-      </section>
-
-
-      <!-- ========================= -->
-      <!-- 영화·예능은 리스트만 있음 -->
-      <!-- ========================= -->
-      <section id="movie-list" class="page" data-breadcrumb="영화">
-        <h2>영화 목록</h2>
-        <p>영화 정보는 아직 준비되지 않았습니다.</p>
-      </section>
-
-      <section id="show-list" class="page" data-breadcrumb="예능">
-        <h2>예능 목록</h2>
-        <p>예능 정보는 아직 준비되지 않았습니다.</p>
-      </section>
 
     </main>
   </div>
