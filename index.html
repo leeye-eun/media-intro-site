@@ -24,13 +24,12 @@
           🎬 드라마 ▼
         </button>
         <ul class="dropdown-content">
-          <li><button class="sub-link" data-page="drama1">드라마 1</button></li>
-          <li><button class="sub-link" data-page="drama2">드라마 2</button></li>
-          <li><button class="sub-link" data-page="drama3">드라마 3</button></li>
+          <li><button class="sub-link" data-page="drama1">상속자들</button></li>
+          <li><button class="sub-link" data-page="drama2">태양의 후예</button></li>
+          <li><button class="sub-link" data-page="drama3">청춘기록</button></li>
         </ul>
       </li>
 
-      <!-- 영화 / 예능은 클릭만 가능 (상세페이지 없음) -->
       <li class="dropdown">
     <button class="nav-link dropdown-btn">
       🎞 영화 ▼
@@ -41,6 +40,17 @@
           <li><button class="sub-link" onclick="location.href='moviefile/mo3.html'">위키드2</button></li>
     </ul>
   </li>
+
+      <li class="dropdown">
+        <button class="nav-link dropdown-btn">
+          📺 예능 ▼
+        </button>
+        <ul class="dropdown-content">
+          <li><button class="sub-link" onclick="location.href='ent1.html'">신서유기</button></li>
+          <li><button class="sub-link" onclick="location.href='ent2.html'">런닝맨</button></li>
+          <li><button class="sub-link" onclick="location.href='ent3.html'">아는형님</button></li>
+        </ul>
+      </li>
 </ul>  
   </aside>
 
@@ -80,14 +90,420 @@
     <button class="home-card" data-page="movie">
       🎞 영화 찾기
     </button>
-    
+    <button class="home-card" data-search="ent">
+      📺 예능 찾기
+    </button>
   </div>
 
         <!-- 검색 영역 -->
         <div id="searchBox" class="search-box hidden">
-          <input id="searchInput" type="text" placeholder="드라마 제목을 입력하세요 (예: 드라마 1)" />
+          <input id="searchInput" type="text" placeholder="제목을 입력하세요 " />
           <ul id="searchResults"></ul>
         </div>
+      </section>
+    <!-- ========================= -->
+      <!-- 드라마 상세 페이지 #1 -->
+      <!-- ========================= -->
+      
+        
+<section id="drama1" class="page" data-breadcrumb="상속자들">
+  <article class="blog-post">
+    <!-- 상단 제목/메타 영역 -->
+    <header class="blog-header">
+      <p class="blog-category">드라마 리뷰 · 로맨스</p>
+      <h1 class="blog-title">[드라마 리뷰] 상속자들 — 금수저와 흙수저의 아주 바쁜 사랑 성장기</h1>
+      <div class="blog-meta">
+        안녕하세요, 드라마 덕후 게스트입니다 😊 · 2024. 12. 08
+      </div>
+    </header>
+
+    <!-- 대표 이미지 영역 -->
+    <div class="blog-hero">
+      <img
+        src="https://i.namu.wiki/i/QZUBVw4KyNPZWj0F7T96T8jehIuYTX-UugLBYufPY4-E2ihkk7pnCWdS9FRLDFk-m1JBrNlu4lxS8Zlva0_1YsNsgItfnmf9Ju9GgeWkKj1hDyGW4ZYJFA-vG300OjB1OdbQ27guLlcoVR7u5fLqFw.webp"
+        alt="상속자들 공식 포스터"
+      />
+      <p class="blog-caption">
+        ⓒ SBS &amp; 제작사 — 상속자들 공식 프로모션 포스터
+      </p>
+    </div>
+
+    <!-- 본문 1: 인사 + 한줄 소개 -->
+    <section class="blog-section">
+      <h2>안녕하세요, 오늘은 &lt;상속자들&gt;을 다시 꺼내봤어요</h2>
+      <p>
+        안녕하세요 여러분! 오늘은 한 번쯤은 다 들어봤을 만큼 유명한 청춘 로맨스 드라마,
+        <strong>《상속자들》</strong>을 리뷰해보려고 해요. 예전에 방영 당시에는
+        그냥 “재벌 2세 나오는 로맨스지 뭐~” 라고 가볍게 넘겼었는데, 다시 보니까
+        <strong>계급, 가족, 꿈, 우정</strong> 이런 키워드들이 꽤 진하게 남더라고요.
+      </p>
+      <p>
+        특히 미국에서 돌아온 재벌가 상속자 <strong>김탄</strong>과, 생활비 때문에
+        아르바이트를 전전하는 <strong>차은상</strong>의 관계가 단순한 로맨스를 넘어서
+        “각자 처한 현실”을 어떻게 받아들이는지 보여주는 느낌이라,
+        요즘 시점에서 다시 봐도 크게 촌스럽지 않았어요.
+      </p>
+    </section>
+
+    <!-- 본문 2: 기본 정보 + 줄거리 -->
+    <section class="blog-section">
+      <h2>기본 정보 &amp; 아주 간단 줄거리</h2>
+      <ul class="blog-info-list">
+        <li><strong>장르</strong> · 청춘 로맨스, 학원물</li>
+        <li><strong>방영</strong> · 2013년 SBS 수목드라마</li>
+        <li><strong>주연</strong> · 이민호, 박신혜, 김우빈 외</li>
+      </ul>
+
+      <p>
+        드라마의 큰 배경은 <strong>재벌가 자제들만 다닌다는 고등학교</strong>예요.
+        여기서 집안이 좋고, 돈 많고, 이미 정해진 길을 걷는 “금수저들”과
+        평범하거나 혹은 빚, 가족 문제로 힘든 “흙수저들”이 섞이면서 갈등이 본격적으로 시작됩니다.
+      </p>
+
+      <p>
+        미국에서 사고를 치고 돌아온 재벌 상속자 <strong>김탄</strong>은
+        우연히 <strong>차은상</strong>과 얽히게 되고,
+        한국에 돌아와서 같은 학교에 다니게 되면서 본격적인 삼각관계와
+        계급 갈등이 펼쳐집니다. 여기에 김탄의 약혼자, 친구, 라이벌까지
+        얽히면서 학교가 거의 작은 사회 실험실처럼 느껴져요.
+      </p>
+    </section>
+
+    <!-- 중간 이미지 하나 더 -->
+    <div class="blog-inline-image">
+      <img
+        src="https://dimg1.donga.com/wps/SPORTS/IMAGE/2013/11/12/58842820.1.jpg"
+        alt="촬영 현장 이미지"
+      />
+      <p class="blog-caption">
+        화려한 집, 학교, 파티 장면들이 계속 등장해서 보는 재미가 꽤 큰 편이에요.
+      </p>
+    </div>
+
+    <!-- 본문 3: 인물 & 매력 포인트 -->
+    <section class="blog-section">
+      <h2>인물들이 만들어내는 재미 포인트</h2>
+      <p>
+        이 드라마의 제일 큰 장점은 <strong>캐릭터 맛</strong>이라고 생각해요.
+        그냥 “재벌남 + 가난한 여주” 조합에서 끝나는 게 아니라,
+        주변 인물들의 이야기도 꽤 비중 있게 다뤄져서 보는 내내 심심할 틈이 없어요.
+      </p>
+
+      <p>
+        특히 기억에 남는 포인트는 이 세 가지였어요:
+      </p>
+
+      <ol class="blog-list">
+        <li>
+          <strong>단순하지 않은 김탄의 캐릭터</strong> — 철없는 재벌 2세처럼 보이지만,
+          가족 문제와 상속 구도 속에서 계속 흔들리는 인물이라 생각보다 입체적이에요.
+        </li>
+        <li>
+          <strong>차은상의 현실감</strong> — 그냥 순진한 여주가 아니라,
+          항상 “우리 집 형편”과 “내 감정” 사이에서 고민하는 모습이 꽤 현실적이라 공감됐어요.
+        </li>
+        <li>
+          <strong>라이벌과 친구 사이</strong> — 김탄과 최영도처럼
+          싸우면서도 서로를 누구보다 잘 아는 관계가 은근히 이 드라마의 핵심 텐션입니다.
+        </li>
+      </ol>
+    </section>
+
+    <!-- 본문 4: 개인적인 감상 -->
+    <section class="blog-section">
+      <h2>지금 다시 보면 좋은 사람 vs 안 맞을 수 있는 사람</h2>
+      <p>
+        솔직히 말하면, <strong>완전 현실적인 드라마는 아니에요.</strong>
+        재벌 설정, 학교 규모, 집 크기 등 다 판타지죠 ㅋㅋ  
+        근데 오히려 그래서 <strong>“그 시절의 감성”</strong>을 그대로 느끼기에 좋은 작품이라고 생각해요.
+      </p>
+
+      <p>
+        이런 사람들에게 추천하고 싶어요:
+      </p>
+      <ul class="blog-info-list">
+        <li>하루 정도는 아무 생각 없이 로맨스 보고 싶은 날</li>
+        <li>옛날 인기작 감성 다시 느껴보고 싶은 사람</li>
+        <li>10대 시절에 상속자들 봤다가, 어른이 돼서 다시 보는 사람</li>
+      </ul>
+
+      <p>
+        반대로 아래처럼 느끼는 사람에겐 조금 안 맞을 수도 있어요:
+      </p>
+      <ul class="blog-info-list">
+        <li>과한 막장/클리셰에 바로 질려버리는 타입</li>
+        <li>현실적인 학교·가족 드라마만 선호하는 사람</li>
+      </ul>
+    </section>
+
+    <!-- 본문 5: 한 줄 정리 -->
+    <section class="blog-section">
+      <h2>한 줄 정리 & 마무리</h2>
+      <p>
+        <strong>“현실은 아니지만, 한 번쯤은 빠져들어봤던 10대 금수저 로맨스의 교과서 같은 드라마”</strong>  
+        라고 정리하고 싶어요. 오랜만에 OST 틀어놓고 다시 정주행해도
+        그 시절 감성이 그대로 살아나는 느낌이라,
+        시험 끝나고 머리 식힐 때 보기에도 나쁘지 않은 작품이었습니다 😊
+      </p>
+      <p>
+        여기까지 읽어주셔서 감사하고,  
+        다음 글에서는 <strong>태양의 후예</strong>도 블로그 느낌으로 한 번 적어볼게요.  
+        궁금한 드라마 있으면 댓글… 대신 마음속으로 남겨주세요 ㅋㅋ
+      </p>
+    </section>
+  </article>
+
+  <!-- 기존처럼 평점 & 리뷰는 아래 유지 -->
+  <div class="review-section">
+    <h3>평점 & 리뷰</h3>
+
+    <div class="review-form">
+      <select id="rate-d1">
+        <option value="5">⭐ 5점</option>
+        <option value="4">⭐ 4점</option>
+        <option value="3">⭐ 3점</option>
+        <option value="2">⭐ 2점</option>
+        <option value="1">⭐ 1점</option>
+      </select>
+      <input id="review-d1" type="text" placeholder="한 줄 리뷰를 입력하세요" />
+      <button data-review="d1" class="review-btn">등록</button>
+    </div>
+
+    <ul id="review-list-d1" class="review-list"></ul>
+  </div>
+</section>
+
+
+      <!-- 드라마 상세 페이지 #2 -->
+      <!-- ========================= -->
+    <section id="drama2" class="page" data-breadcrumb="태양의 후예">
+
+  <div class="blog-container">
+
+    <h1 class="blog-title">태양의 후예 – 다시 봐도 미쳐버리는 띵작…😍🔥</h1>
+
+    <p class="blog-date">작성일 · 2025. 12. 08</p>
+
+    <img 
+      class="blog-main-img"
+      src="https://i.namu.wiki/i/oCmPIikJzq8e7NsrSVry_MxwCS3t2xKyCf6Yroop1YeqH4JduI2ojfM4J48Sy_4tXBn6er_evV4eAD5DifRAGXCJNlXLeCNU4njwOLf328bO9xII7eXehRdiRVm3V7gRQTV40tfnMek71qGDbIIkoQ.webp"
+      alt="태양의 후예 포스터"
+/>
+
+    <p class="blog-text">
+      안녕하세요 여러분 😊  
+      오늘은 정말 오랜만에 다시 꺼내본 드라마,  
+      바로 <strong>《태양의 후예》</strong> 리뷰를 해보려고 해요!
+      이 드라마는 2016년에 방영됐는데… 와 아직도 감정선이 생생하게 살아있는 거 실화냐고요 😭  
+      군인과 의사라는 서로 다른 세계의 사람들이 사랑, 사명, 현실 사이에서 고민하는 모습이 정말 매력적이에요.
+    </p>
+
+    <h2 class="blog-subtitle">💘 유시진 & 강모연… 이 케미 뭐냐고요</h2>
+
+    <p class="blog-text">
+      유시진 대위는 특전사 소속으로, 책임감 + 카리스마 + 능력치를 다 찍은 인간 버전 만능캐.  
+      반면 강모연은 현실적이고 신념 강한 의사로, 자신의 가치관을 확실히 갖고 있는 캐릭터예요.  
+      둘이 만나면 매번 부딪히는데…  
+      그게 또 그렇게 설레고 애틋할 수가 없습니다 😳  
+    </p>
+
+    <img 
+      class="blog-img"
+      src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA4MTJfMTY5%2FMDAxNjYwMjc5OTE1ODI4.MRl6_7Z47XHgX2VnostEUvS6LDIrqJb-tt6unmRtvP4g.AIEC1nB2JzfhSHm5ktqEkVEk6oMbRm7IOkfMehdx0_cg.PNG.reply8990%2F%25C6%25ED%25C1%25FD%25BB%25E7%25C1%25F8003.png&type=sc960_832"
+      alt="태양의 후예 명장면"
+/>
+
+    <p class="blog-text">
+      특히 우르크에서 재회하는 장면… 그 묘한 긴장감과 감정선…  
+      진짜 두근거리고 미쳐버리는 장면이에요.  
+      이런 감정연기, 지금 다시 봐도 못 잊음.
+    </p>
+
+    <h2 class="blog-subtitle">⚔️ 액션 + 멜로 + 휴먼 다 되는 괴물 드라마</h2>
+
+    <p class="blog-text">
+      군인이다 보니 액션 장면이 많은데, 그냥 보여주기용이 아니라  
+      <strong>직업적 사명감과 인간적인 고민을 동시에 담아낸 장면들</strong>이 많아요.  
+      그래서 더 몰입되고, 캐릭터들이 되게 입체적으로 느껴져요.
+    </p>
+
+    <img 
+      class="blog-img"
+      src="https://onimg.nate.com/orgImg/sb/2016/02/25/20160225134002_56ce85a27a8d8_1.jpg"
+      alt="태양의 후예 액션"
+/>
+
+    <p class="blog-text">
+      그리고 재난 상황, 의료진의 고군분투, 사람과 사람 사이 관계…  
+      이런 것들이 한데 섞여서 그냥 ‘로맨스 드라마’라고 보기엔 너무 깊어요.
+    </p>
+
+    <h2 class="blog-subtitle">🌅 한 줄 정리: 다시 봐도 완성도 미친 드라마</h2>
+
+    <p class="blog-text">
+      다시 보면 느끼지만, 감정선 하나하나가 너무 탄탄해요.  
+      캐릭터도 입체적이고, 로맨스도 자연스럽고, 이야기 흐름도 매끄럽고…  
+      왜 이 드라마가 그렇게 난리가 났는지 다시 깨닫게 되는 작품입니다.
+    </p>
+
+    <p class="blog-text">
+      재탕할 드라마 고민 중이면… <strong>이거 무조건 추천합니다 진짜로.</strong>  
+    </p>
+
+  </div>
+
+  <!-- 기존 리뷰 박스는 그대로 유지 -->
+  <div class="review-section">
+    <h3>평점 & 리뷰</h3>
+
+    <div class="review-form">
+      <select id="rate-d2">
+        <option value="5">⭐ 5점</option>
+        <option value="4">⭐ 4점</option>
+        <option value="3">⭐ 3점</option>
+        <option value="2">⭐ 2점</option>
+        <option value="1">⭐ 1점</option>
+      </select>
+      <input id="review-d2" type="text" placeholder="한 줄 리뷰를 입력하세요" />
+      <button data-review="d2" class="review-btn">등록</button>
+    </div>
+
+    <ul id="review-list-d2" class="review-list"></ul>
+  </div>
+
+</section>
+
+
+
+
+            <!-- ========================= -->
+      <!-- 드라마 상세 페이지 #3 -->
+      <!-- ========================= -->
+      <section id="drama3" class="page" data-breadcrumb="청춘기록">
+
+  <div class="blog-container">
+    <h1 class="blog-title">청춘기록 – 현실이라 더 아픈, 청춘들의 기록장 📷</h1>
+    <p class="blog-date">작성일 · 2025. 12. 08</p>
+
+    <!-- 대표 포스터 -->
+    <img
+      class="blog-main-img"
+      src="https://poc-cf-image.cjenm.com/resize/459/public/pcms/rep/B120207900/kr/B120207900_rep_1667888595747.jpg?v=1742978883"
+      alt="청춘기록 포스터"
+    />
+
+    <p class="blog-text">
+      안녕하세요 😊 오늘은 제목부터 너무 내 얘기 같은 드라마,
+      <strong>《청춘기록》</strong>을 리뷰해보려고 해요.  
+      모델로 일하면서 각자 다른 꿈을 꾸는 청춘들이, 진짜 현실적인 벽에 부딪히면서도
+      끝까지 포기하지 않는 모습을 그린 드라마죠.  
+      보면서 “아… 이건 그냥 우리 세대 이야기다…” 싶어서 유난히 공감이 많이 됐어요.
+    </p>
+
+    <h2 class="blog-subtitle">🎬 드라마 한 줄 소개</h2>
+    <p class="blog-text">
+      모델 출신인 <strong>사혜준</strong>은 배우를 꿈꾸지만, 오디션에서 계속 떨어지고
+      업계 현실과 집안의 반대까지 한 번에 마주합니다.  
+      그런 혜준 앞에, 메이크업 아티스트를 꿈꾸는 <strong>안정하</strong>가 등장하고,
+      둘은 서로의 “현실”을 누구보다 잘 이해해 주는 동료이자 연인이 되어가요.
+    </p>
+
+    <!-- 중간 이미지 1 -->
+    <img
+      class="blog-img"
+      src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMDA5MTRfMTYz%2FMDAxNjAwMDQ5MjU2ODIx.MwBHCcjjXrpBzWWz-vjbCXdVfAs5zplz2UAqustIilEg.qY0FWHUCB5WqQZ3ocK7QPkstqgz5mK_fWECmbrYQFj8g.JPEG.windyoung75%2F20200914_110429.jpg&type=sc960_832"
+      alt="카메라와 청춘의 이미지"
+    />
+    <p class="blog-text">
+      화려해 보이는 연예·패션 업계 뒤에서,  
+      계속 비교당하고 평가받는 청춘들의 뒷모습이 자주 나와서
+      “나만 힘든 거 아니구나…” 하는 묘한 위로도 되더라고요.
+    </p>
+
+    <h2 class="blog-subtitle">💬 이 드라마가 특히 좋았던 이유</h2>
+    <p class="blog-text">
+      개인적으로 제일 좋았던 점은, 이 드라마가 <strong>“열심히 산다고 다 되는 건 아니다”</strong>라는
+      되게 현실적인 말을 하면서도,  
+      결국엔 <strong>“그래도 해보자, 그래도 한 번 더 버텨보자”</strong>라고 말해주는 느낌이었어요.
+    </p>
+
+    <ul class="blog-info-list">
+      <li>✔ 꿈과 생계 사이에서 계속 계산기 두드리는 청춘의 고민</li>
+      <li>✔ 부모님의 기대·현실적인 조언과 내 꿈 사이의 거리감</li>
+      <li>✔ 사랑도 “현실” 때문에 흔들릴 수 있다는 걸 솔직하게 보여주는 연애선</li>
+    </ul>
+
+    <!-- 중간 이미지 2 -->
+    <img
+      class="blog-img"
+      src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fimage.ytn.co.kr%2Fgeneral%2Fjpg%2F2020%2F0807%2F202008071046500773_t.jpg&type=sc960_832"
+      alt="청춘기록"
+    />
+    <p class="blog-text">
+      화려한 성공 스토리보다는,  
+      <strong>“오늘도 겨우 하루를 버텨낸 사람들”</strong>의 이야기 같아서  
+      밤에 혼자 보기 딱 좋은 드라마였어요.
+    </p>
+
+    <h2 class="blog-subtitle">📌 이런 사람에게 추천하고 싶어요</h2>
+    <p class="blog-text">
+      솔직히 말하면, 속 시원한 판타지 해피엔딩만 좋아하는 사람에게는 조금 답답하게 느껴질 수도 있어요.
+      대신에 아래에 해당하는 사람이라면 진짜 강추합니다:
+    </p>
+
+    <ul class="blog-info-list">
+      <li>· 지금 하는 일과 “내가 진짜 하고 싶은 일” 사이에서 고민 중인 사람</li>
+      <li>· 현실적인 가족 이야기, 친구 이야기 좋아하는 사람</li>
+      <li>· 잔잔하지만 오래 기억에 남는 드라마를 찾는 사람</li>
+    </ul>
+
+    <h2 class="blog-subtitle">📷 한 줄 정리</h2>
+    <p class="blog-text">
+      <strong>“기록으로 남기고 싶은, 아주 현실적인 청춘의 한 페이지”</strong>  
+      라고 정리하고 싶어요.  
+      화려한 성공담보다는, 지금 이 순간 열심히 버티고 있는
+      우리 세대의 얼굴을 있는 그대로 보여주는 드라마라  
+      마음이 이상하게 따뜻해지면서도 찌릿한 느낌이 남습니다.
+    </p>
+
+    <p class="blog-text">
+      요즘 좀 지치고, “나만 뒤처지는 것 같다”라는 생각이 든다면  
+      조용히 불 꺼놓고 《청춘기록》 한 두 편씩 보는 거… 진심 추천합니다 😊
+    </p>
+  </div>
+
+  <!-- 평점 & 리뷰 영역은 그대로 유지 -->
+  <div class="review-section">
+    <h3>평점 & 리뷰</h3>
+
+    <div class="review-form">
+      <select id="rate-d3">
+        <option value="5">⭐ 5점</option>
+        <option value="4">⭐ 4점</option>
+        <option value="3">⭐ 3점</option>
+        <option value="2">⭐ 2점</option>
+        <option value="1">⭐ 1점</option>
+      </select>
+      <input id="review-d3" type="text" placeholder="한 줄 리뷰를 입력하세요" />
+      <button data-review="d3" class="review-btn">등록</button>
+    </div>
+
+    <ul id="review-list-d3" class="review-list"></ul>
+  </div>
+
+</section>
+
+
+      <!-- ========================= -->
+      <!-- 드라마 목록 페이지 -->
+      <!-- ========================= -->
+      <section id="drama-list" class="page" data-breadcrumb="드라마 목록">
+        <h2>드라마 목록</h2>
+        <ul class="list-ul">
+          <li><button class="list-link" data-page="drama1">드라마 1</button></li>
+          <li><button class="list-link" data-page="drama2">드라마 2</button></li>
+          <li><button class="list-link" data-page="drama3">드라마 3</button></li>
+        </ul>
       </section>
     
     </main>
