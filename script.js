@@ -90,6 +90,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (type === "ent") {
         searchInput.placeholder = "예능 제목을 입력하시오";
+      } else if (type === "movie") { 
+        // [추가됨] 영화일 때 문구
+        searchInput.placeholder = "영화 제목을 입력하세요 (예: 주토피아2)";
       } else {
         searchInput.placeholder = "드라마 제목을 입력하세요 (예: 상속자들)";
       }
@@ -102,9 +105,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* ================================
-     7. [핵심 수정] 통합 검색 기능
-     - 드라마 검색 시: 내부 페이지 이동 (showPage)
-     - 예능 검색 시: 외부 HTML 파일 이동 (location.href)
+    7. [핵심 수정] 통합 검색 기능
+    - 드라마 검색 시: 내부 페이지 이동 (showPage)
+    - 예능 검색 시: 외부 HTML 파일 이동 (location.href)
   ================================ */
   const searchResults = document.getElementById("searchResults");
 
@@ -117,7 +120,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // [예능] 외부 파일 이동용 url
     { title: "신서유기", url: "ent1.html" },
     { title: "런닝맨", url: "ent2.html" },
-    { title: "아는형님", url: "ent3.html" }
+    { title: "아는형님", url: "ent3.html" },
+
+    // [영화] 외부 파일 이동용 url
+    { title: "주토피아2", url: "moviefile/mo1.html" },
+    { title: "아바타: 불과 재", url: "moviefile/mo2.html" },
+    { title: "위키드: 포 굿", url: "moviefile/mo3.html" }
+
   ];
 
   searchInput.addEventListener("input", () => {
@@ -152,7 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* ================================
-     8. 리뷰 기능
+    8. 리뷰 기능
   ================================ */
   function loadReviews(dramaKey) {
     const list = document.getElementById(`review-list-${dramaKey}`);
